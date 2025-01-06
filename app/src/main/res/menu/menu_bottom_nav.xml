@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/mong"
+        android:icon="@drawable/ic_bottom_nav_mong"
+        android:title="MONG"/>
+    <item
+        android:id="@+id/chat"
+        android:icon="@drawable/ic_bottom_nav_chat"
+        android:title="CHAT"/>
+    <item
+        android:id="@+id/column"
+        android:icon="@drawable/ic_bottom_nav_column"
+        android:title="COLUMN"/>
+    <item
+        android:id="@+id/do_it"
+        android:icon="@drawable/ic_bottom_nav_do_it"
+        android:title="DO-It"/>
+</menu>
