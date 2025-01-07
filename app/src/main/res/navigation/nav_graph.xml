@@ -3,25 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mongFragment">
+    app:startDestination="@id/fragment_mong">
 
     <fragment
-        android:id="@+id/mongFragment"
+        android:id="@+id/fragment_mong"
         android:name="com.example.durymong.view.mong.MongFragment"
         tools:layout="@layout/fragment_mong"
         android:label="mong" />
     <fragment
-        android:id="@+id/chatFragment"
+        android:id="@+id/fragment_chat"
         android:name="com.example.durymong.view.chat.ChatFragment"
         tools:layout="@layout/fragment_chat"
         android:label="chat" />
     <fragment
-        android:id="@+id/columnFragment"
+        android:id="@+id/fragment_column"
         android:name="com.example.durymong.view.column.ColumnFragment"
         tools:layout="@layout/fragment_column"
         android:label="column" />
     <fragment
-        android:id="@+id/doItFragment"
+        android:id="@+id/fragment_do_it"
         android:name="com.example.durymong.view.do_it.DoItFragment"
         tools:layout="@layout/fragment_do_it"
         android:label="do_it" />

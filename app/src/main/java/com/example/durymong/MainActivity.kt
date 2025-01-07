@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     private fun setBottomNavVisible(navController: NavController) {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             binding.bnvMain.visibility = when (destination.id) {
-                R.id.mongFragment, R.id.chatFragment, R.id.columnFragment, R.id.doItFragment -> View.VISIBLE
+                R.id.fragment_mong, R.id.fragment_chat, R.id.fragment_column, R.id.fragment_do_it-> View.VISIBLE
                 else -> View.GONE
             }
         }
