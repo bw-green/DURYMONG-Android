@@ -24,6 +24,16 @@
         android:id="@+id/fragment_do_it"
         android:name="com.example.durymong.view.do_it.DoItFragment"
         tools:layout="@layout/fragment_do_it"
-        android:label="do_it" />
+        android:label="do_it" >
+        <action
+            android:id="@+id/action_fragment_do_it_to_fragment_do_it_walk"
+            app:destination="@id/fragment_do_it_walk" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_do_it_walk"
+        android:name="com.example.durymong.view.do_it.DoItWalkFragment"
+        tools:layout="@layout/fragment_do_it_walk"
+        android:label="do_it_walk"/>
 
 </navigation>

@@ -143,6 +143,7 @@
                 app:layout_constraintStart_toEndOf="@id/rb_do_it_bed_clean" />
 
             <ImageView
+                android:id="@+id/iv_do_it_bed_clean"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="111dp"
@@ -174,6 +175,7 @@
                 app:layout_constraintStart_toEndOf="@id/rb_do_it_walk" />
 
             <ImageView
+                android:id="@+id/iv_do_it_walk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="111dp"
@@ -205,6 +207,7 @@
                 app:layout_constraintStart_toEndOf="@id/rb_do_it_stretching" />
 
             <ImageView
+                android:id="@+id/iv_do_it_stretching"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="111dp"
@@ -236,6 +239,7 @@
                 app:layout_constraintStart_toEndOf="@id/rb_do_it_meditation" />
 
             <ImageView
+                android:id="@+id/iv_do_it_meditation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="111dp"
