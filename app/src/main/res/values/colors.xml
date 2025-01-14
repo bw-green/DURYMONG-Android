@@ -8,6 +8,7 @@
     <color name="light_purple">#F3E9FF</color>
     <color name="filled_pressed_button_purple">#886AAC</color>
     <color name="do_it_purple"> #AD81FF</color>
+    <color name="do_it_bed_purple"> #A17FCB</color>
     <!--  gray  -->
     <color name="gray1">#F1F1F1</color>
     <color name="gray2">#E4E4E4</color>
