@@ -5,11 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.durymong.databinding.FragmentDoItPostTraumaStressTestBinding
+import com.example.durymong.databinding.FragmentDoItBedBinding
 
-class DoItPostTraumaStressTestFragment : Fragment() {
-
-    private var _binding: FragmentDoItPostTraumaStressTestBinding? = null
+class DoItBedFragment : Fragment() {
+    private var _binding: FragmentDoItBedBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -17,7 +16,7 @@ class DoItPostTraumaStressTestFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentDoItPostTraumaStressTestBinding.inflate(layoutInflater)
+        _binding = FragmentDoItBedBinding.inflate(layoutInflater)
 
         return binding.root
     }
@@ -26,6 +25,5 @@ class DoItPostTraumaStressTestFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 
 }

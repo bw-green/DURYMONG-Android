@@ -20,6 +20,8 @@ class DoItFragment : Fragment() {
         _binding = FragmentDoItBinding.inflate(layoutInflater)
 
         initWalk()
+
+        initStressTest()
         return binding.root
     }
 
@@ -32,6 +34,13 @@ class DoItFragment : Fragment() {
         _binding?.ivDoItWalk?.setOnClickListener {
             val navController = findNavController()
             navController.navigate(R.id.action_fragment_do_it_to_fragment_do_it_walk)
+        }
+    }
+
+    private fun initStressTest() {
+        _binding?.cvDoItStressLevelTest?.setOnClickListener {
+            val navController = findNavController()
+            navController.navigate(R.id.action_fragment_do_it_to_fragment_stress_test_page)
         }
     }
 }

@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_white"
     android:backgroundTint="@null"
-    tools:context=".view.do_it.DoitBedFragment">
-
+    tools:context=".view.do_it.DoItStretchingFragment">
 
     <View
         android:id="@+id/v_do_it_bed_top"
@@ -32,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/suite_semi_bold"
-        android:text="침구 정리하기"
+        android:text="실내 스트레칭"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/iv_do_it_bed_back"
@@ -52,90 +51,83 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
+
             <TextView
                 android:id="@+id/tv_do_it_bed_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="침구 정리하기"
-                android:textColor="@color/do_it_bed_purple"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="21dp"
                 android:fontFamily="@font/suite_semi_bold"
+                android:text="실내 스트레칭"
+                android:textColor="@color/do_it_bed_purple"
                 android:textSize="24sp"
-                />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-<!--            편안한 수면과 건강한 생활을 위한 첫걸음이 됩니다."-->
+
             <TextView
                 android:id="@+id/tv_do_it_bed_explanation1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="침구를 정리하는 것은 단순한 행동처럼 보이지만,"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_do_it_bed_main"
                 android:layout_marginTop="45dp"
-                android:textColor="@color/black"
                 android:fontFamily="@font/suite_medium"
+                android:text="침구를 정리하는 것은 단순한 행동처럼 보이지만,"
+                android:textColor="@color/black"
                 android:textSize="16sp"
-                />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_do_it_bed_main" />
 
             <TextView
                 android:id="@+id/tv_do_it_bed_explanation2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:fontFamily="@font/suite_medium"
+                android:text="편안한 수면과 건강한 생활을 위한 첫걸음이 됩니다."
+                android:textColor="@color/black"
                 android:textSize="16sp"
-                android:text ="편안한 수면과 건강한 생활을 위한 첫걸음이 됩니다."
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_do_it_bed_explanation1"
-                />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_do_it_bed_explanation1" />
 
             <TextView
                 android:id="@+id/tv_do_it_bed_Additional1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text ="매일 아침 창문을 열어 환기하고, 햇볕을 받은 깻끗한 침구는"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_do_it_bed_explanation2"
-                android:textColor="@color/gray3"
                 android:fontFamily="@font/suite_medium"
+                android:text="매일 아침 창문을 열어 환기하고, 햇볕을 받은 깻끗한 침구는"
+                android:textColor="@color/gray3"
                 android:textSize="14dp"
-                />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_do_it_bed_explanation2" />
 
             <TextView
                 android:id="@+id/tv_do_it_bed_Additional2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text ="심리적으로 안정감을 주어 숙면에 도움이 됩니다. 또한,"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_do_it_bed_Additional1"
-                android:textColor="@color/gray3"
                 android:fontFamily="@font/suite_medium"
+                android:text="심리적으로 안정감을 주어 숙면에 도움이 됩니다. 또한,"
+                android:textColor="@color/gray3"
                 android:textSize="14dp"
-                />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_do_it_bed_Additional1" />
 
             <TextView
                 android:id="@+id/tv_do_it_bed_Additional3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text ="수면의 질 향상은 전반적인 건강증진으로 이어질 수 있습니다."
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_do_it_bed_Additional2"
-                android:textColor="@color/gray3"
                 android:fontFamily="@font/suite_medium"
+                android:text="수면의 질 향상은 전반적인 건강증진으로 이어질 수 있습니다."
+                android:textColor="@color/gray3"
                 android:textSize="14dp"
-                />
-
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_do_it_bed_Additional2" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
