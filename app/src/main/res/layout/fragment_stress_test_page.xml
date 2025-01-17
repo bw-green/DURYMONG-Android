@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_white"
+    android:backgroundTint="@null"
+    tools:context=".view.do_it.stress_test_page.StressTestPageFragment">
+
+    <View
+        android:id="@+id/v_do_it_stress_test_page_top"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_do_it_bed_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_do_it_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/suite_semi_bold"
+        android:text="스트레스 수치 검사"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_do_it_bed_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_do_it_bed_back" />
+
+    <TextView
+        android:id="@+id/tv_stress_test_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/suite_medium"
+        android:text="스트레스 정신 건강 척도"
+        android:textColor="@color/gray4"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/v_stress_test_line"
+        app:layout_constraintTop_toBottomOf="@id/v_do_it_stress_test_page_top" />
+
+    <TextView
+        android:id="@+id/tv_stress_test_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/suite_medium"
+        android:text="11문항"
+        android:textColor="@color/gray4"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/tv_stress_test_name"
+        app:layout_constraintTop_toTopOf="@id/tv_stress_test_name" />
+
+    <View
+        android:id="@+id/v_stress_test_line"
+        android:layout_width="358dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="17dp"
+        android:background="@color/gray2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_stress_test_number" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_stress_test"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_stress_test_line" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
