@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_column_menu_top_bar"
+        android:id="@+id/cl_monthly_diary_top_bar"
         android:layout_width="match_parent"
         android:layout_height="44dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +57,7 @@
         android:paddingHorizontal="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cl_column_menu_top_bar">
+        app:layout_constraintTop_toBottomOf="@id/cl_monthly_diary_top_bar">
 
         <LinearLayout
             android:id="@+id/ll_search_component"
