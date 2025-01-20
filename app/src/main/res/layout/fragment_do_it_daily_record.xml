@@ -165,7 +165,7 @@
         android:layout_marginTop="45dp"
         android:background="@drawable/btn_bg_8_white_purple"
         android:backgroundTint="@null"
-        android:drawableLeft="@drawable/ic_doit_archive"
+        android:drawableLeft="@drawable/ic_do_it_archive"
         android:paddingHorizontal="30dp"
         android:text="기록 조회"
         android:textColor="@color/main_purple"
