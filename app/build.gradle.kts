@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("org.jetbrains.kotlin.kapt")
 }
 
 //local property 불러오기
@@ -44,6 +45,7 @@ android {
     buildFeatures {
         compose = true
         viewBinding = true
+        dataBinding = true
         buildConfig = true
     }
 }
@@ -74,4 +76,6 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    //glide
+    implementation (libs.glide)
 }
