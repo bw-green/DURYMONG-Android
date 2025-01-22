@@ -13,6 +13,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.fragment_settings)
+        setContentView(R.layout.fragment_settings_edit_user_info)
     }
 }
