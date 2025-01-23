@@ -5,16 +5,21 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/fragment_mong">
 
+    <!--Mong-->
     <fragment
         android:id="@+id/fragment_mong"
         android:name="com.example.durymong.view.mong.MongFragment"
         android:label="mong"
         tools:layout="@layout/fragment_mong" />
+
+    <!--Chat-->
     <fragment
         android:id="@+id/fragment_chat"
         android:name="com.example.durymong.view.chat.ChatFragment"
         android:label="chat"
         tools:layout="@layout/fragment_chat" />
+
+    <!--Column -->
     <fragment
         android:id="@+id/fragment_column"
         android:name="com.example.durymong.view.column.ColumnFragment"
@@ -24,11 +29,19 @@
             android:id="@+id/action_fragment_column_to_fragment_column_detail"
             app:destination="@id/fragment_column_detail" />
     </fragment>
+
     <fragment
         android:id="@+id/fragment_column_detail"
         android:name="com.example.durymong.view.column.ColumnDetailFragment"
         android:label="column_detail"
-        tools:layout="@layout/fragment_column_detail"/>
+        tools:layout="@layout/fragment_column_detail">
+        <argument
+            android:name="columnData"
+            app:argType="com.example.durymong.view.column.viewmodel.ColumnViewModel$Column"
+            app:nullable="false" />
+    </fragment>
+
+    <!--Do It-->
     <fragment
         android:id="@+id/fragment_do_it"
         android:name="com.example.durymong.view.do_it.DoItFragment"
