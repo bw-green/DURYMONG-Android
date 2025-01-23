@@ -6,16 +6,16 @@ import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.durymong.databinding.ItemColumnCategoryBinding
-import com.example.durymong.view.column.viewmodel.ColumnCategory
+import com.example.durymong.view.column.viewmodel.ColumnViewModel
 
 class RVAdapterColumnCategory(
     private val context: Context,
-    private val items: LiveData<List<ColumnCategory>>,
-    private val onItemClick: (ColumnCategory) -> Unit
+    private val items: LiveData<List<ColumnViewModel.ColumnCategory>>,
+    private val onItemClick: (ColumnViewModel.ColumnCategory) -> Unit
 ) : RecyclerView.Adapter<RVAdapterColumnCategory.ViewHolder>() {
     inner class ViewHolder(val binding: ItemColumnCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: ColumnCategory) {
+        fun bind(item: ColumnViewModel.ColumnCategory) {
             binding.ivColumnCategoryIcon.setImageResource(item.imgId)
             binding.columnCategoryName.text = item.name
             binding.cardColumnCategory.setOnClickListener {

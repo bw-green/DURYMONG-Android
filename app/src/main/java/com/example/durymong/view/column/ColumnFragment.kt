@@ -40,14 +40,22 @@ class ColumnFragment : Fragment() {
         _binding = null
     }
 
-    private fun initRVAdapterColumnCategory(){
-        rvAdapterColumnCategory = RVAdapterColumnCategory(requireContext(), viewModel.columnCategoryList){
-            //이후에 api 연결시에 세부 내용은 아마도 변경될 예정
-            viewModel.fetchColumnData()
-            findNavController().navigate(R.id.action_fragment_column_to_fragment_column_detail)
-        }
+    private fun initRVAdapterColumnCategory() {
+        //이후에 api 연결시 세부 내용은 아마도 변경될 예정
+        rvAdapterColumnCategory =
+            RVAdapterColumnCategory(requireContext(), viewModel.columnCategoryList) {
+                viewModel.fetchColumnData()
 
-        with(binding.rvColumnMenuList){
+                //ColumnDetailFragment로 Column 객체 전달
+                val columnData = viewModel.columnData.value
+                    ?: throw IllegalStateException("Column data is null")
+                val action =
+                    ColumnFragmentDirections.actionFragmentColumnToFragmentColumnDetail(columnData)
+
+                findNavController().navigate(action)
+            }
+
+        with(binding.rvColumnMenuList) {
             adapter = rvAdapterColumnCategory
             layoutManager = GridLayoutManager(requireContext(), 3)
         }
