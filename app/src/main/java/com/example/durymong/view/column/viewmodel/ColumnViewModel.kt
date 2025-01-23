@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.durymong.R
 import kotlinx.parcelize.Parcelize
 
+
 class ColumnViewModel : ViewModel() {
     //실제 data를 저장할 변수들
     private val _columnCategoryList = MutableLiveData<List<ColumnCategory>>()
@@ -51,18 +52,18 @@ class ColumnViewModel : ViewModel() {
             body = "본문 내용.."
         )
     }
+
+    data class ColumnCategory(
+        val imgId: Int,
+        val name: String,
+        val description: String
+    )
+
+    @Parcelize
+    data class Column(
+        val imgId: Int,
+        val headLine: String,
+        val title: String,
+        val body: String
+    ): Parcelable
 }
-
-data class ColumnCategory(
-    val imgId: Int,
-    val name: String,
-    val description: String
-)
-
-@Parcelize
-data class Column(
-    val imgId: Int,
-    val headLine: String,
-    val title: String,
-    val body: String
-): Parcelable
