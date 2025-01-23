@@ -2,10 +2,16 @@ package com.example.durymong.view.column.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupWindow
+import androidx.compose.ui.layout.Layout
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
+import com.example.durymong.R
 import com.example.durymong.databinding.ItemColumnCategoryBinding
+import com.example.durymong.databinding.ItemColumnCategoryDescriptionBinding
+import com.example.durymong.util.dpToPx
 import com.example.durymong.view.column.viewmodel.ColumnViewModel
 
 class RVAdapterColumnCategory(
@@ -15,11 +21,55 @@ class RVAdapterColumnCategory(
 ) : RecyclerView.Adapter<RVAdapterColumnCategory.ViewHolder>() {
     inner class ViewHolder(val binding: ItemColumnCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: ColumnViewModel.ColumnCategory) {
+        fun bind(item: ColumnViewModel.ColumnCategory, position: Int) {
             binding.ivColumnCategoryIcon.setImageResource(item.imgId)
             binding.columnCategoryName.text = item.name
+            //카테고리 클릭
             binding.cardColumnCategory.setOnClickListener {
                 onItemClick(item)
+            }
+
+            //카테고리 설명 클릭
+            binding.ivColumnCategoryQuestionmark.setOnClickListener{
+                if (position % 3 == 0){
+                    //각 행의 첫 번째 아이템
+                    showPopupWindow(it, item.description, onLeft = false)
+                } else{
+                    showPopupWindow(it, item.description, onLeft = true)
+                }
+            }
+        }
+
+        private fun showPopupWindow(anchor: View, description: String, onLeft: Boolean){
+            val binding = ItemColumnCategoryDescriptionBinding.inflate(
+                LayoutInflater.from(anchor.context)
+            )
+            binding.tvColumnCategoryDescription.text = description
+
+            //좌우반전 처리
+            if(onLeft){
+                binding.ivColumnCategoryDescriptionBubble.scaleX = -1f
+            } else{
+                binding.ivColumnCategoryDescriptionBubble.scaleX = 1f
+            }
+
+            //popup 생성
+            val popupWindow = PopupWindow(
+                binding.root,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                true
+            )
+
+            //popup 위치 조정
+            if(onLeft){
+                val xOffsetPx = (-174).dpToPx(anchor.context)
+                val yOffsetPx = (-10).dpToPx(anchor.context)
+                popupWindow.showAsDropDown(anchor, xOffsetPx, yOffsetPx)
+            } else{
+                val xOffsetPx = 18.dpToPx(anchor.context)
+                val yOffsetPx = (-10).dpToPx(anchor.context)
+                popupWindow.showAsDropDown(anchor, xOffsetPx, yOffsetPx)
             }
         }
     }
@@ -37,7 +87,7 @@ class RVAdapterColumnCategory(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = items.value?.get(position)
         if (currentItem != null) {
-            holder.bind(currentItem)
+            holder.bind(currentItem, position)
         }
     }
 }
