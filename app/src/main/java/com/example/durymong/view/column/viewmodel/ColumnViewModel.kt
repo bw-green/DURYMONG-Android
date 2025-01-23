@@ -53,6 +53,7 @@ class ColumnViewModel : ViewModel() {
         )
     }
 
+    //dummy data들, 이후에 api 연결시에는 dto를 만들고 아래의 data class들은 사용하지 않을 예정
     data class ColumnCategory(
         val imgId: Int,
         val name: String,
