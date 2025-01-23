@@ -46,10 +46,12 @@ class ColumnViewModel : ViewModel() {
     //데이터를 가져오는 함수, api 연결시에 변경 예정, 현재는 테스트용 코드
     fun fetchColumnData() {
         _columnData.value = Column(
-            imgId= R.drawable.img_column_thumbnail_dummy,
+            imgId = R.drawable.img_column_thumbnail_dummy,
             headLine = "잠 못 드는 하루하루, 수면장애",
             title = "수면장애에 대한 이야기",
-            body = "본문 내용.."
+            body = " 수면장애란 제대로 잘 수 없는 상태를 말합니다. 인구의 약 20% 이상이 경험하는 흔한 질환입니다.  흔히 겪는 불면증처럼 잠들기가 어려운 경우부터 충분히 잔 것 같은데 낮에 계속 졸음이 오는 상태, 수면 리듬이 흐트러져 자고 깨는 데 어려움을 겪는 상태 모두를 포함합니다.\n"
+                    + " 수면장애란 제대로 잘 수 없는 상태를 말합니다. 인구의 약 20% 이상이 경험하는 흔한 질환입니다.  흔히 겪는 불면증처럼 잠들기가 어려운 경우부터 충분히 잔 것 같은데 낮에 계속 졸음이 오는 상태, 수면 리듬이 흐트러져 자고 깨는 데 어려움을 겪는 상태 모두를 포함합니다.\n"
+                    + " 수면장애란 제대로 잘 수 없는 상태를 말합니다. 인구의 약 20% 이상이 경험하는 흔한 질환입니다.  흔히 겪는 불면증처럼 잠들기가 어려운 경우부터 충분히 잔 것 같은데 낮에 계속 졸음이 오는 상태, 수면 리듬이 흐트러져 자고 깨는 데 어려움을 겪는 상태 모두를 포함합니다.\n"
         )
     }
 
@@ -66,5 +68,5 @@ class ColumnViewModel : ViewModel() {
         val headLine: String,
         val title: String,
         val body: String
-    ): Parcelable
+    ) : Parcelable
 }
