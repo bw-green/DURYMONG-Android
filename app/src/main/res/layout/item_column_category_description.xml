@@ -4,6 +4,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
+        android:id="@+id/iv_column_category_description_bubble"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
@@ -13,6 +14,7 @@
         />
 
     <TextView
+        android:id="@+id/tv_column_category_description"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/column_menu_description_dummy"
