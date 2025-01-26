@@ -35,7 +35,7 @@
 
     <fragment
         android:id="@+id/fragment_do_it_walk"
-        android:name="com.example.durymong.view.do_it.DoItWalkFragment"
+        android:name="com.example.durymong.view.do_it.walk.DoItWalkFragment"
         tools:layout="@layout/fragment_do_it_walk"
         android:label="do_it_walk"/>
 

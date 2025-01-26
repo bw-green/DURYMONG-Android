@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_white"
     android:backgroundTint="@null"
-    tools:context=".view.do_it.DoItWalkFragment">
+    tools:context=".view.do_it.walk.DoItWalkFragment">
 
     <View
         android:id="@+id/v_do_it_walk_top"

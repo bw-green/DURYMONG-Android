@@ -1,4 +1,4 @@
-package com.example.durymong.view.do_it
+package com.example.durymong.view.do_it.walk
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
