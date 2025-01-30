@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Durymong</string>
+    <string name="chat_dog_greeting">\"고민에 대한 해결을 원한다면 들어와\n내가 해결할 수 있도록 도와줄게..!\"</string>
+    <string name="chat_cat_greeting">\"오늘하루 너무 힘들었지.. 고생많았어\n나랑 편하게 얘기 나누자!\"</string>
+    <string name="chat_bear_greeting">\"모든 얘기를 따뜻하게 들어줄게요,\n저와 대화 나누실래요?\"</string>
 </resources>
