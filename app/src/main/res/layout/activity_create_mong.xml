@@ -25,10 +25,11 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!-- 캐릭터 선택 슬라이드 / 기능 구현시 추가 예정 -->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_create_mong_choose_character"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="390dp"
+        android:layout_height="248dp"
         android:layout_marginTop="160dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
