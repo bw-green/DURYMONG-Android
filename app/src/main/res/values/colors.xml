@@ -14,4 +14,8 @@
     <color name="gray2">#E4E4E4</color>
     <color name="gray3">#999999</color>
     <color name="gray4">#656565</color>
+    <!-- mong color -->
+    <color name="mong_orange">#FCC266</color>
+    <color name="mong_green">#9FC310</color>
+    <color name="mong_pink">#FFA2B6</color>
 </resources>
