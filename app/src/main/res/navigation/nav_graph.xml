@@ -5,32 +5,54 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/fragment_mong">
 
+    <!--Mong-->
     <fragment
         android:id="@+id/fragment_mong"
         android:name="com.example.durymong.view.mong.MongFragment"
-        tools:layout="@layout/fragment_mong"
-        android:label="mong" />
+        android:label="mong"
+        tools:layout="@layout/fragment_mong" />
+
+    <!--Chat-->
     <fragment
         android:id="@+id/fragment_chat"
         android:name="com.example.durymong.view.chat.ChatFragment"
-        tools:layout="@layout/fragment_chat"
-        android:label="chat" />
+        android:label="chat"
+        tools:layout="@layout/fragment_chat" />
+
+    <!--Column -->
     <fragment
         android:id="@+id/fragment_column"
         android:name="com.example.durymong.view.column.ColumnFragment"
-        tools:layout="@layout/fragment_column"
-        android:label="column" />
+        android:label="column"
+        tools:layout="@layout/fragment_column">
+        <action
+            android:id="@+id/action_fragment_column_to_fragment_column_detail"
+            app:destination="@id/fragment_column_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_column_detail"
+        android:name="com.example.durymong.view.column.ColumnDetailFragment"
+        android:label="column_detail"
+        tools:layout="@layout/fragment_column_detail">
+        <argument
+            android:name="columnData"
+            app:argType="com.example.durymong.view.column.viewmodel.ColumnViewModel$Column"
+            app:nullable="false" />
+    </fragment>
+
+    <!--Do It-->
     <fragment
         android:id="@+id/fragment_do_it"
         android:name="com.example.durymong.view.do_it.DoItFragment"
-        tools:layout="@layout/fragment_do_it"
-        android:label="do_it" >
+        android:label="do_it"
+        tools:layout="@layout/fragment_do_it">
         <action
             android:id="@+id/action_fragment_do_it_to_fragment_do_it_walk"
             app:destination="@id/fragment_do_it_walk" />
         <action
             android:id="@+id/action_fragment_do_it_to_fragment_stress_test_page"
-            app:destination="@id/fragment_stress_test_page"/>
+            app:destination="@id/fragment_stress_test_page" />
     </fragment>
 
     <fragment
@@ -42,8 +64,7 @@
     <fragment
         android:id="@+id/fragment_stress_test_page"
         android:name="com.example.durymong.view.do_it.stress_test_page.StressTestPageFragment"
-        tools:layout="@layout/fragment_stress_test_page"
         android:label="stress_test_page"
-        />
+        tools:layout="@layout/fragment_stress_test_page" />
 
 </navigation>
