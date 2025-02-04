@@ -18,14 +18,17 @@ class RVAdapterMonthlyRecord(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: MonthlyRecordViewModel.DateRecord) {
             binding.tvCalendarDate.text = item.date
-            binding.vCalendarCircle.alpha = if (item.activityCount >= 3) {
+            binding.vCalendarCircle.alpha = if (item.count >= 3) {
                 1f
-            } else if (item.activityCount >= 2) {
+            } else if (item.count >= 2) {
                 0.7f
-            } else if (item.activityCount >= 1) {
+            } else if (item.count >= 1) {
                 0.3f
             } else {
                 0f
+            }
+            binding.itemDay.setOnClickListener {
+                onItemClick(item)
             }
         }
 
@@ -49,5 +52,4 @@ class RVAdapterMonthlyRecord(
             holder.bind(item)
         }
     }
-
 }
