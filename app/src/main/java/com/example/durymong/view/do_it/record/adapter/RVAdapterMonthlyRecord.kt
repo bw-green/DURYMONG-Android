@@ -45,7 +45,7 @@ class RVAdapterMonthlyRecord(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items.value?.get(position)
-        if (item == null){
+        if (item == null || item.date.isEmpty()){
             holder.binding.tvCalendarDate.text = ""
             holder.binding.vCalendarCircle.visibility = View.INVISIBLE
         } else{
