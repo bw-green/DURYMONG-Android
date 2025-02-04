@@ -1,4 +1,4 @@
-package com.example.durymong.data.repository
+package com.example.durymong.model.repository
 
 class MongRepository {
     // 몽(홈) 관련 기능을 수행하는 Repository

@@ -1,4 +1,4 @@
-package com.example.durymong.data.dto.response
+package com.example.durymong.model.dto.response
 
 data class ColumnResponseDto(
     val dummy: String
