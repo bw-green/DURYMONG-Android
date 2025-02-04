@@ -29,16 +29,6 @@ class TimerBottomSheet : BottomSheetDialogFragment() {
 
 
     // 밑에 네비게이션바가 안보임
-//    override fun onStart() {
-//        super.onStart()
-//        val dialog = dialog as? BottomSheetDialog
-//        dialog?.findViewById<View>(R.id.cl_timer_bottom_sheet)?.let { bottomSheet ->
-//            val behavior = BottomSheetBehavior.from(bottomSheet)
-//            behavior.peekHeight = 100  // 시작 높이 설정
-//            behavior.isFitToContents = false // 컨텐츠 크기에 맞출지 여부
-//            behavior.state = BottomSheetBehavior.STATE_COLLAPSED // 기본적으로 접힌 상태
-//        }
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
