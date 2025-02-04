@@ -8,12 +8,18 @@ import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.durymong.databinding.ItemCalendarDayBinding
 import com.example.durymong.view.do_it.record.viewmodel.MonthlyRecordViewModel
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class RVAdapterMonthlyRecord(
     private val context: Context,
     private val items: LiveData<List<MonthlyRecordViewModel.DateRecord>>,
     private val onItemClick: (MonthlyRecordViewModel.DateRecord) -> Unit
 ) : RecyclerView.Adapter<RVAdapterMonthlyRecord.ViewHolder>() {
+
+    private var currentDate: String = getCurrentDate()
+
     inner class ViewHolder(val binding: ItemCalendarDayBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: MonthlyRecordViewModel.DateRecord) {
@@ -29,6 +35,11 @@ class RVAdapterMonthlyRecord(
             }
             binding.itemDay.setOnClickListener {
                 onItemClick(item)
+            }
+            if (item.date == currentDate) {
+                binding.vCalendarSelected.visibility = View.VISIBLE
+            } else {
+                binding.vCalendarSelected.visibility = View.INVISIBLE
             }
         }
 
@@ -48,8 +59,14 @@ class RVAdapterMonthlyRecord(
         if (item == null || item.date.isEmpty()){
             holder.binding.tvCalendarDate.text = ""
             holder.binding.vCalendarCircle.visibility = View.INVISIBLE
+            holder.binding.vCalendarSelected.visibility = View.INVISIBLE
         } else{
             holder.bind(item)
         }
+    }
+
+    private fun getCurrentDate(): String {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        return dateFormat.format(Date())
     }
 }
