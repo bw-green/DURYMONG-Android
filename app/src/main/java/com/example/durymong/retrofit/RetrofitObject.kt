@@ -1,4 +1,4 @@
-package com.example.durymong.retrofit.service
+package com.example.durymong.retrofit
 
 import com.example.durymong.BuildConfig
 
