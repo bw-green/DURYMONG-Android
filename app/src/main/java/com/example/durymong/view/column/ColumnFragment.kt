@@ -32,7 +32,7 @@ class ColumnFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initRVAdapterColumnCategory()
+//        initRVAdapterColumnCategory()
     }
 
     override fun onDestroyView() {
