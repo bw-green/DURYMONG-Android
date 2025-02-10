@@ -13,4 +13,8 @@ object RetrofitObject {
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+
+    // Repository에서 서비스를 생성할 때 사용
+    // ex) private val service: SampleService = RetrofitObject.createService()
+    inline fun <reified T> createService(): T = retrofit.create(T::class.java)
 }
