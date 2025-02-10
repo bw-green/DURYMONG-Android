@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 object TokenManager {
     private const val PREF_NAME = "durymong_prefs"
     private const val TOKEN_KEY = "auth_token"
+    private const val REFRESH_TOKEN_KEY = "refresh_token"
 
     private lateinit var prefs: SharedPreferences
     private val _tokenLiveData = MutableLiveData<String?>()
@@ -21,6 +22,11 @@ object TokenManager {
     fun saveToken(token: String) {
         prefs.edit().putString(TOKEN_KEY, token).apply()
         _tokenLiveData.postValue(token)  // LiveData 업데이트
+    }
+
+    fun saveRefreshToken(refreshToken: String) {
+        prefs.edit().putString(REFRESH_TOKEN_KEY, refreshToken).apply()
+        // TODO: refresh token 저장
     }
 
     fun getToken(): String? = prefs.getString(TOKEN_KEY, null)

@@ -2,6 +2,7 @@ package com.example.durymong.view.user.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.example.durymong.model.TokenManager
 import com.example.durymong.model.dto.request.user.UserLoginRequestDto
 import com.example.durymong.model.repository.UserRepository
 
@@ -17,6 +18,10 @@ class AuthViewModel : ViewModel() {
         repository.postLogin(userData) { response ->
             if (response != null) {
                 Log.d("AuthViewModel", "로그인 성공: ${response.result.accessToken}")
+                val token = response.result.accessToken
+                if (token.isNotBlank()) {
+                     TokenManager.saveToken(token)
+                }
             } else {
                 Log.e("AuthViewModel", "로그인 실패")
             }
