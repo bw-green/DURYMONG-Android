@@ -5,6 +5,7 @@ import com.example.durymong.model.dto.response.column.CategoryResponseDto
 import com.example.durymong.retrofit.RetrofitObject
 import com.example.durymong.retrofit.service.ColumnService
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class ColumnRepository {
@@ -13,7 +14,7 @@ class ColumnRepository {
     private val service: ColumnService = RetrofitObject.createService()
 
     fun getColumnCategories() =
-        service.getColumnCategories().enqueue(object : retrofit2.Callback<CategoryResponseDto> {
+        service.getColumnCategories().enqueue(object : Callback<CategoryResponseDto> {
             override fun onResponse(
                 call: Call<CategoryResponseDto>,
                 response: Response<CategoryResponseDto>

@@ -1,6 +1,6 @@
 package com.example.durymong.model.dto.response.user
 
-data class UserTokenRequest(
+data class UserTokenRequestDto(
     var success: Boolean,
     var code: Int,
     var message: String,
