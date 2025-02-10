@@ -23,12 +23,12 @@ class ColumnViewModel : ViewModel() {
 
     init {
         //처음 viewModel이 생성될 때 실행할 작업들
-        fetchColumnCategoryData()
+//        fetchColumnCategoryData()
     }
 
     //데이터를 가져오는 함수, api 연결시에 변경 예정, 현재는 테스트용 코드
     fun fetchColumnCategoryData() {
-        viewModelScope.launch{
+        viewModelScope.launch {
             try {
                 val response = repository.getColumnCategories()
                 // TODO: response.result 를 _columnCategoryList 에 저장
