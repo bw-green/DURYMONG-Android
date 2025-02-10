@@ -23,8 +23,7 @@ class AuthActivity : AppCompatActivity(){
 
         if(isLoggedIn){
             // 로그인 되어있을 경우 MainActivity로 이동
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+            navigateToMain()
         }
 
         initButtons()
@@ -35,15 +34,27 @@ class AuthActivity : AppCompatActivity(){
             // 임의로 테스트용 함수 호출, 이후에는 수정해서 사용
             loginTest()
         }
+        binding.btnDurymongMainCreateAccount.setOnClickListener {
+            navigateToRegister()
+        }
     }
 
     private fun navigateToRegister() {
-        TODO("Not yet implemented")
+        // TODO: 회원가입 화면으로 이동
+//        navigateToRegister()
+
+        // 임의로 main으로 가도록 설정
+        navigateToMain()
     }
 
 
     private fun navigateToLogin(){
         TODO("Not yet implemented")
+    }
+
+    private fun navigateToMain(){
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     private fun loginTest(){

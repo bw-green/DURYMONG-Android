@@ -10,8 +10,8 @@ class AuthViewModel : ViewModel() {
 
     fun loginTest() {
         val userData = UserLoginRequestDto(
-            id = "test",
-            password = "test"
+            id = "durymong",
+            password = "durymong12"
         )
 
         repository.postLogin(userData) { response ->
