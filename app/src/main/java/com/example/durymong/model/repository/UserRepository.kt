@@ -22,6 +22,7 @@ class UserRepository {
             ) {
                 if (response.isSuccessful) {
                     Log.d("successful", "로그인 성공")
+                    callback(response.body())
                 } else {
                     Log.e("UserRepository", "로그인 실패: ${response.errorBody()?.string()}")
                     callback(null)

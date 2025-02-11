@@ -32,24 +32,26 @@ class AuthActivity : AppCompatActivity(){
     private fun initButtons(){
         binding.btnDurymongMainLogin.setOnClickListener {
             // 임의로 테스트용 함수 호출, 이후에는 수정해서 사용
-            loginTest()
+            navigateToLogin()
         }
         binding.btnDurymongMainCreateAccount.setOnClickListener {
             navigateToRegister()
+        }
+        binding.ivDurymongMainLogo.setOnClickListener {
+            // 임의로 테스트용 함수 호출, 이후에는 수정해서 사용
+            loginTest()
+            navigateToMain()
         }
     }
 
     private fun navigateToRegister() {
         // TODO: 회원가입 화면으로 이동
-//        navigateToRegister()
-
-        // 임의로 main으로 가도록 설정
-        navigateToMain()
     }
 
 
     private fun navigateToLogin(){
-        TODO("Not yet implemented")
+        // TODO: 로그인 화면으로 이동
+        navigateToLogin()
     }
 
     private fun navigateToMain(){
