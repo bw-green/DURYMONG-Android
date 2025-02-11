@@ -207,10 +207,10 @@
             android:layout_height="16dp"
             android:layout_marginStart="20dp"
             android:src="@drawable/ic_home_write"
+            android:tint="@color/gray3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:tint="@color/gray3" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -238,7 +238,7 @@
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/v_chat_oval_12dp" />
+            android:background="@drawable/v_chat_oval_stroke_2dp" />
 
         <TextView
             android:layout_width="wrap_content"
