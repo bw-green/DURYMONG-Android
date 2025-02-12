@@ -4,7 +4,6 @@ class SubmitTestResponseDto(
     val code:Int,
     val message: String,
     val result: SubmitResultData,
-    val scoreDistributionList: List<ScoreDistributionData>,
     val success: Boolean
 )
 
@@ -15,7 +14,9 @@ data class ScoreDistributionData(
 )
 
 data class SubmitResultData (
-    val minScore: Int,
-    val maxScore: Int,
-    val description: String
+    val testName: String,
+    val userName: String,
+    val userScore: Int,
+    val userResult: ScoreDistributionData,
+    val scoreDistributionList: List<ScoreDistributionData>
 )

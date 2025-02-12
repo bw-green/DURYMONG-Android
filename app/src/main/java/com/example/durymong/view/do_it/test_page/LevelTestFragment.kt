@@ -1,6 +1,7 @@
 package com.example.durymong.view.do_it.test_page
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ class LevelTestFragment : Fragment() {
     private val args: TestPageFragmentArgs by navArgs()
 
     private val viewModel: TestMainPageViewModel by activityViewModels()
+    private var testId=0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +39,15 @@ class LevelTestFragment : Fragment() {
     }
 
     private fun initTestName() {
+        when(args.testName){
+            "외상 후 스트레스 검사"-> testId=1
+            "문장 완성 검사"-> testId=2
+            "스트레스 수치 검사"->testId=3
+            "우울감 검사"->testId=4
+            "TCI 검사 "->testId=5
+            else-> Log.d("TestMainPageViewModel", "테스트 네임 오타 발생"+args.testName)
+        }
+        viewModel.loadTestMainPage(testId)
         binding.tvDoItStressNameTop.text = args.testName
         binding.tvDoItStressTestName.text = args.testName
         binding.tvDoItStressTestName2.text = args.testName
@@ -48,7 +59,8 @@ class LevelTestFragment : Fragment() {
         binding.tvDoItQuestionNumber.text=viewModel.testMainPageList.value?.result?.countOfQuestions.toString()+"문항"
         binding.tvDoItStressTime.text="약"+viewModel.testMainPageList.value?.result?.requiredTime.toString()+"분"
 
-        // 추가적으로 작업예정
+        binding.tvDoItStressTestRecentRecordDate.text=viewModel.testMainPageList.value?.result?.lastTestDto?.date
+        binding.tvDoItStressTestRecentRecordNameScore.text=viewModel.testMainPageList.value?.result?.lastTestDto?.userName+"님      "+ viewModel.testMainPageList.value?.result?.lastTestDto?.lastScore+"점"
     }
 
     private fun initStartTest() {

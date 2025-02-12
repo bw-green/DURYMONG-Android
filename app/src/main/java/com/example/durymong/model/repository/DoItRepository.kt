@@ -1,6 +1,8 @@
 package com.example.durymong.model.repository
 
 import android.util.Log
+import com.example.durymong.model.dto.request.doit.SubmitTestRequestDto
+import com.example.durymong.model.dto.response.doit.SubmitTestResponseDto
 import com.example.durymong.model.dto.response.doit.TestMainPageResponseDto
 import com.example.durymong.model.dto.response.doit.TestPageResponseDto
 import com.example.durymong.retrofit.RetrofitObject
@@ -34,11 +36,9 @@ class DoItRepository {
         })
     }
 
-    fun getTestMainPage(
-        testId: Int,
-        onSuccess: (TestMainPageResponseDto) -> Unit,
-        onError: (Throwable) -> Unit  // 실패 시 처리할 콜백 추가
-    ) {
+    fun getTestMainPage(testId: Int,
+                        onSuccess: (TestMainPageResponseDto) -> Unit
+    ) =
         doItService.getTestMainPage(testId).enqueue(object : Callback<TestMainPageResponseDto> {
             override fun onResponse(
                 call: Call<TestMainPageResponseDto>,
@@ -49,19 +49,40 @@ class DoItRepository {
                     if (body != null) {
                         onSuccess(body)
                         Log.d("DoItRepository", "onResponseSuccess: $body")
-                    } else {
-                        onError(Throwable("Response body is null"))
                     }
-                } else {
-                    onError(Throwable("Response error: ${response.code()}"))
                 }
             }
 
             override fun onFailure(call: Call<TestMainPageResponseDto>, t: Throwable) {
                 Log.e("DoItRepository", "onFailure: ${t.message}")
-                onError(t) // 실패 시 콜백 실행
             }
+        })
+
+    fun getTestResult(testId: Int, submitTestRequestDto: SubmitTestRequestDto,onSuccess: (SubmitTestResponseDto) -> Unit)=
+        doItService.submitTest(testId, submitTestRequestDto).enqueue(object : Callback<SubmitTestResponseDto> {
+            override fun onResponse(
+                p0: Call<SubmitTestResponseDto>,
+                response: Response<SubmitTestResponseDto>
+            ) {
+                if(response.isSuccessful){
+                    if(response.body()!=null){
+                        onSuccess(response.body()!!)
+                    }else{
+                        Log.d("DoItRepository", "resultNull")
+                    }
+                }
+                else{
+                    Log.d("DoItRepository", "onResponseFail")
+                }
+
+            }
+
+            override fun onFailure(p0: Call<SubmitTestResponseDto>, p1: Throwable) {
+                Log.d("DoItRepository", "onFailure: ${p1.message}")
+            }
+
+
         })
     }
 
-}
+
