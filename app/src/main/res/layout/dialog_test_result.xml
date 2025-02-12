@@ -91,49 +91,49 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_result_message" />
 
-    <TextView
-        android:id="@+id/tv_result_message_12_13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/suite_medium"
-        android:text="⦁ 12-13 : 스트레스 지수 20% (약간 스트레스)"
-        android:textColor="@color/gray3"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@id/tv_result_message_0_11"
-        app:layout_constraintTop_toBottomOf="@id/tv_result_message_0_11" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_result_message_12_13"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="@font/suite_medium"-->
+<!--        android:text="⦁ 12-13 : 스트레스 지수 20% (약간 스트레스)"-->
+<!--        android:textColor="@color/gray3"-->
+<!--        android:textSize="12sp"-->
+<!--        app:layout_constraintStart_toStartOf="@id/tv_result_message_0_11"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_result_message_0_11" />-->
 
-    <TextView
-        android:id="@+id/tv_result_message_14_16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/suite_medium"
-        android:text="⦁ 14-16 : 스트레스 지수 40% (비교적 심한 스트레스)"
-        android:textColor="@color/gray3"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@id/tv_result_message_0_11"
-        app:layout_constraintTop_toBottomOf="@id/tv_result_message_12_13" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_result_message_14_16"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="@font/suite_medium"-->
+<!--        android:text="⦁ 14-16 : 스트레스 지수 40% (비교적 심한 스트레스)"-->
+<!--        android:textColor="@color/gray3"-->
+<!--        android:textSize="12sp"-->
+<!--        app:layout_constraintStart_toStartOf="@id/tv_result_message_0_11"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_result_message_12_13" />-->
 
-    <TextView
-        android:id="@+id/tv_result_message_17_20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/suite_medium"
-        android:text="⦁ 17-20 : 스트레스 지수 60% (심한 스트레스)"
-        android:textColor="@color/gray3"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@id/tv_result_message_0_11"
-        app:layout_constraintTop_toBottomOf="@id/tv_result_message_14_16" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_result_message_17_20"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="@font/suite_medium"-->
+<!--        android:text="⦁ 17-20 : 스트레스 지수 60% (심한 스트레스)"-->
+<!--        android:textColor="@color/gray3"-->
+<!--        android:textSize="12sp"-->
+<!--        app:layout_constraintStart_toStartOf="@id/tv_result_message_0_11"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_result_message_14_16" />-->
 
-    <TextView
-        android:id="@+id/tv_result_message_21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/suite_medium"
-        android:text="⦁ 21 이상 : 스트레스 지수 80% (탈진기 수준의 위험기)"
-        android:textColor="@color/gray3"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@id/tv_result_message_0_11"
-        app:layout_constraintTop_toBottomOf="@id/tv_result_message_17_20" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_result_message_21"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="@font/suite_medium"-->
+<!--        android:text="⦁ 21 이상 : 스트레스 지수 80% (탈진기 수준의 위험기)"-->
+<!--        android:textColor="@color/gray3"-->
+<!--        android:textSize="12sp"-->
+<!--        app:layout_constraintStart_toStartOf="@id/tv_result_message_0_11"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_result_message_17_20" />-->
 
 
     <ImageView

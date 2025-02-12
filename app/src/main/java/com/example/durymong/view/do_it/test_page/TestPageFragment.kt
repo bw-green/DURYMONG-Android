@@ -15,6 +15,9 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.durymong.R
 import com.example.durymong.databinding.FragmentTestPageBinding
+import com.example.durymong.model.dto.request.doit.SubmitTestRequestDto
+import com.example.durymong.model.dto.request.doit.TestPageResponseData
+import com.example.durymong.view.do_it.test_page.model.TestPageData
 import com.example.durymong.view.do_it.test_page.model.TestPageViewModel
 
 class TestPageFragment : Fragment() {
@@ -34,6 +37,8 @@ class TestPageFragment : Fragment() {
     private var isEnd = false
 
     private val args: TestPageFragmentArgs by navArgs()
+
+    private var testId =0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,9 +61,16 @@ class TestPageFragment : Fragment() {
     }
 
     private fun setTestData() {
+        when(args.testName){
+            "우울증 검사"-> testId=1
+            "외상후 스트레스 검사" -> testId=2
+            "스트레스 수치 검사" -> testId=3
+            "조울증 검사" -> testId=4
+            "범불안장애 검사"-> testId=5
+        }
+        viewModel.loadTestPageData(testId)
         // 무슨 테스트인지 넣어주는 부분
         binding.tvStressTestName.text = args.testName
-        // 뷰모델로 넣을 생각하는 중인데 api 보고 결정할듯
     }
 
     private fun initBackButton() {
@@ -89,6 +101,8 @@ class TestPageFragment : Fragment() {
     private fun initNextButton() {
         binding.ivTestNext.setOnClickListener {
             if (currentTestPage == lastTestPage) {
+
+//                if(완료하기가 다 됐으면-> 쇼하는걸 처리해야함)
                 showResultDialog(this.requireContext())
                 isEnd = true
             } else {
@@ -147,6 +161,19 @@ class TestPageFragment : Fragment() {
     }
 
     private fun showResultDialog(context: Context) {
+        //이미 응답다 돼어 있음
+        val testResultData = mutableListOf<TestPageResponseData>()
+
+        if(viewModel.testPageList.value!=null){
+            for (item in viewModel.testPageList.value!!){
+                testResultData.add(TestPageResponseData(item.questionId.number,item.selected))
+            }
+        }
+        val requestData =SubmitTestRequestDto(testResultData)
+
+        viewModel.loadTestResult(testId,requestData)
+
+        // 여기까지 데이터 불러오기
 
         val resultDialog = Dialog(context)
         resultDialog.setContentView(R.layout.dialog_test_result)
@@ -155,42 +182,25 @@ class TestPageFragment : Fragment() {
         val userName = resultDialog.findViewById<TextView>(R.id.tv_user_name)
 
         val okButton = resultDialog.findViewById<ImageView>(R.id.iv_result_ok)
+        val backButton =resultDialog.findViewById<ImageView>(R.id.iv_result_back)
         val resultScore = resultDialog.findViewById<TextView>(R.id.tv_result_score)
         val resultText = resultDialog.findViewById<TextView>(R.id.tv_result_message)
 
         val resultText1 = resultDialog.findViewById<TextView>(R.id.tv_result_message_0_11)
-        val resultText2 = resultDialog.findViewById<TextView>(R.id.tv_result_message_12_13)
-        val resultText3 = resultDialog.findViewById<TextView>(R.id.tv_result_message_14_16)
-        val resultText4 = resultDialog.findViewById<TextView>(R.id.tv_result_message_17_20)
-        val resultText5 = resultDialog.findViewById<TextView>(R.id.tv_result_message_21)
-
-        // 검사 마다 text 세팅 다시 해줘야함 .
-        userName.text="?"
 
 
-        var result =0
-        for(i in viewModel.testPageList.value!!){
-            result +=i.selected
-        }
-        resultScore.text=result.toString()
+        userName.text=viewModel.testResult.value?.result?.userName
+        resultScore.text=viewModel.testResult.value?.result?.userScore.toString()+"점"
 
-        if(result<=11){
-            resultText.text=resultText1.text
-        }
-        if(result in 12..13){
-            resultText.text=resultText2.text
-        }
-        if(result in 14..16){
-            resultText.text=resultText3.text
-        }
-        if(result in 17..20){
-            resultText.text=resultText4.text
-        }
-        if(result>=21) {
-            resultText.text = resultText5.text
-        }
+//        resultText.text=viewModel.testResult.value?.result?.userResult?.minScore.toString()+
+//                "-"+viewModel.testResult.value?.result?.userResult?.maxScore.toString()+" : "+
+//                viewModel.testResult.value?.result?.userResult?.description
 
         okButton.setOnClickListener {
+            resultDialog.dismiss()
+            findNavController().navigateUp()
+        }
+        backButton.setOnClickListener{
             resultDialog.dismiss()
         }
 
