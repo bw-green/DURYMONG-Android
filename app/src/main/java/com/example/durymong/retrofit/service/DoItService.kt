@@ -1,6 +1,8 @@
 package com.example.durymong.retrofit.service
 
+import com.example.durymong.model.dto.request.doit.CheckActivityRequest
 import com.example.durymong.model.dto.request.doit.SubmitTestRequestDto
+import com.example.durymong.model.dto.response.doit.ActivityTestListResponse
 import com.example.durymong.model.dto.response.doit.SubmitTestResponseDto
 import retrofit2.Call
 import com.example.durymong.model.dto.response.doit.TestMainPageResponseDto
@@ -21,5 +23,11 @@ interface DoItService {
     fun submitTest(@Path("testId") testId: Int,
                    @Body submitTestRequestDto: SubmitTestRequestDto
     ): Call<SubmitTestResponseDto>
+
+    @POST("activities")
+    fun getDoItMainPage(): Call<ActivityTestListResponse>
+
+    @POST("activities/user-records")
+    fun submitCheck(@Body checkActivityRequest: CheckActivityRequest): Call<Void>
 
 }

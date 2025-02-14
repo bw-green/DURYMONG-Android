@@ -7,10 +7,15 @@ import android.view.ViewGroup
 import androidx.compose.ui.platform.DisableContentCapture
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.durymong.R
 import com.example.durymong.databinding.FragmentDoItBinding
+import com.example.durymong.model.dto.request.doit.CheckActivityRequest
+import com.example.durymong.view.do_it.test_page.model.TestMainPageViewModel
+import com.example.durymong.view.do_it.viewmodel.DoItViewModel
 
 class DoItFragment : Fragment() {
     private var _binding: FragmentDoItBinding? = null
@@ -18,12 +23,16 @@ class DoItFragment : Fragment() {
 
     private lateinit var navController : NavController
 
+    private val viewModel: DoItViewModel by activityViewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentDoItBinding.inflate(layoutInflater)
         navController= findNavController()
+
+        initMainPage()
 
         initCheckButton()
 
@@ -45,6 +54,21 @@ class DoItFragment : Fragment() {
         return binding.root
     }
 
+    private fun initMainPage() {
+        val data =viewModel.doItMainPage.value?.result
+        binding.cbDoItWalk.isChecked=true
+        if (data != null) {
+            binding.cbDoItBedClean.isChecked =data.activityList[0].checked
+            binding.cbDoItWalk.isChecked =data.activityList[1].checked
+            binding.cbDoItStretching.isChecked =data.activityList[2].checked
+            binding.cbDoItMeditation.isChecked =data.activityList[3].checked
+
+            Glide.with(this) // 메인 몽 이미지
+                .load(data.mongImage)
+                .into(binding.ivDoItMainMong)
+        }
+    }
+
     private fun initMonthlyDiary() {
         binding.ivDoItCalender.setOnClickListener {
             navController.navigate(R.id.action_fragment_do_it_to_fragment_do_it_monthly_diary)
@@ -53,15 +77,24 @@ class DoItFragment : Fragment() {
 
 
     private fun initCheckButton() {
-        // api 연결 해야함
-        binding.rbDoItMeditation.isChecked = true
-
+        binding.cbDoItBedClean.setOnClickListener{
+            viewModel.submitCheck(CheckActivityRequest(1))
+        }
+        binding.cbDoItWalk.setOnClickListener{
+            viewModel.submitCheck(CheckActivityRequest(2))
+        }
+        binding.cbDoItStretching.setOnClickListener{
+            viewModel.submitCheck(CheckActivityRequest(3))
+        }
+        binding.cbDoItMeditation.setOnClickListener{
+            viewModel.submitCheck(CheckActivityRequest(4))
+        }
     }
 
     private fun initTciTest() {
         binding.cvDoItTciTest.setOnClickListener {
             val action = DoItFragmentDirections.actionFragmentDoItToFragmentLevelTest(
-                testName = "TCI 검사"
+                testName = "범불안 장애 검사"
             )
             navController.navigate(action)
         }
@@ -70,7 +103,7 @@ class DoItFragment : Fragment() {
     private fun initDepressionTest() {
         binding.cvDoItDepressionTest.setOnClickListener {
             val action = DoItFragmentDirections.actionFragmentDoItToFragmentLevelTest(
-                testName = "우울증 검사"
+                testName = "조울증 검사"
             )
             navController.navigate(action)
         }
@@ -79,7 +112,7 @@ class DoItFragment : Fragment() {
     private fun initSentenceTest() {
         binding.cvDoItSentenceCompletionTest.setOnClickListener {
             val action = DoItFragmentDirections.actionFragmentDoItToFragmentLevelTest(
-                testName = "문장 완성 검사"
+                testName = "외상 후 스트레스 검사"
             )
             navController.navigate(action)
         }
@@ -88,7 +121,7 @@ class DoItFragment : Fragment() {
     private fun initPostStressTest() {
         binding.cvDoItPostTraumaticStressTest.setOnClickListener {
             val action = DoItFragmentDirections.actionFragmentDoItToFragmentLevelTest(
-                testName = "외상후 스트레스 검사"
+                testName = "우울증 검사"
             )
             navController.navigate(action)
         }
