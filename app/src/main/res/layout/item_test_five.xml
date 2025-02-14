@@ -40,7 +40,7 @@
         app:layout_constraintStart_toStartOf="parent"
 
         >
-
+        <!--         이미지는 수정예정-->
         <RadioButton
             android:id="@+id/rb_test_1"
             android:layout_width="26dp"
@@ -50,17 +50,33 @@
 
         <RadioButton
             android:id="@+id/rb_test_2"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginStart="82dp"
-            android:background="@drawable/ic_test_radio_button_mid"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/ic_test_radio_button_left"
             android:button="@null" />
 
         <RadioButton
             android:id="@+id/rb_test_3"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/ic_test_radio_button_mid"
+            android:button="@null" />
+
+        <RadioButton
+            android:id="@+id/rb_test_4"
             android:layout_width="26dp"
             android:layout_height="26dp"
-            android:layout_marginStart="82dp"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/ic_test_radio_button_right"
+            android:button="@null" />
+
+        <RadioButton
+            android:id="@+id/rb_test_5"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="30dp"
             android:background="@drawable/ic_test_radio_button_right"
             android:button="@null" />
     </RadioGroup>

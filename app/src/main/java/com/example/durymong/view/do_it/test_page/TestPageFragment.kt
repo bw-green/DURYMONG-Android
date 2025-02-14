@@ -17,7 +17,6 @@ import com.example.durymong.R
 import com.example.durymong.databinding.FragmentTestPageBinding
 import com.example.durymong.model.dto.request.doit.SubmitTestRequestDto
 import com.example.durymong.model.dto.request.doit.TestPageResponseData
-import com.example.durymong.view.do_it.test_page.model.TestPageData
 import com.example.durymong.view.do_it.test_page.model.TestPageViewModel
 
 class TestPageFragment : Fragment() {
@@ -63,10 +62,10 @@ class TestPageFragment : Fragment() {
     private fun setTestData() {
         when(args.testName){
             "우울증 검사"-> testId=1
-            "외상후 스트레스 검사" -> testId=2
+            "외상 후 스트레스 검사" -> testId=2
             "스트레스 수치 검사" -> testId=3
             "조울증 검사" -> testId=4
-            "범불안장애 검사"-> testId=5
+            "범불안 장애 검사"-> testId=5
         }
         viewModel.loadTestPageData(testId)
         // 무슨 테스트인지 넣어주는 부분
@@ -101,9 +100,21 @@ class TestPageFragment : Fragment() {
     private fun initNextButton() {
         binding.ivTestNext.setOnClickListener {
             if (currentTestPage == lastTestPage) {
+                var finish =true
+                for(item in viewModel.testPageList.value!!){
+                    if(item.selected==0){
+                        item.showWarning=true
+                        finish=false
+                    }
+                }
+                if(finish){
+                    showResultDialog(this.requireContext())
+                }
+                else{
+                    initRvAdapter(start, end)
+                    showResultWarningDialog(this.requireContext())
+                }
 
-//                if(완료하기가 다 됐으면-> 쇼하는걸 처리해야함)
-                showResultDialog(this.requireContext())
                 isEnd = true
             } else {
                 currentTestPage++
@@ -160,6 +171,24 @@ class TestPageFragment : Fragment() {
         }
     }
 
+    private fun showResultWarningDialog(context: Context){
+        val resultDialog = Dialog(context)
+        resultDialog.setContentView(R.layout.dialog_test_warning)
+        resultDialog.setCancelable(false)
+
+        val finishButton = resultDialog.findViewById<ImageView>(R.id.iv_test_warning_finish)
+        val backButton =resultDialog.findViewById<ImageView>(R.id.iv_test_warning_continue)
+        finishButton.setOnClickListener {
+            resultDialog.dismiss()
+            findNavController().navigateUp()
+        }
+        backButton.setOnClickListener{
+            resultDialog.dismiss()
+        }
+
+        resultDialog.show()
+    }
+
     private fun showResultDialog(context: Context) {
         //이미 응답다 돼어 있음
         val testResultData = mutableListOf<TestPageResponseData>()
@@ -191,10 +220,8 @@ class TestPageFragment : Fragment() {
 
         userName.text=viewModel.testResult.value?.result?.userName
         resultScore.text=viewModel.testResult.value?.result?.userScore.toString()+"점"
-
-//        resultText.text=viewModel.testResult.value?.result?.userResult?.minScore.toString()+
-//                "-"+viewModel.testResult.value?.result?.userResult?.maxScore.toString()+" : "+
-//                viewModel.testResult.value?.result?.userResult?.description
+        resultText.text=viewModel.testResult.value?.result?.userResult
+        resultText1.text=viewModel.testResult.value?.result?.scoreDistributionList
 
         okButton.setOnClickListener {
             resultDialog.dismiss()

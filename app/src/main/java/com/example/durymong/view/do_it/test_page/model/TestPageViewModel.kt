@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.durymong.model.dto.request.doit.SubmitTestRequestDto
+import com.example.durymong.model.dto.response.doit.QuestionDto
 import com.example.durymong.model.dto.response.doit.SubmitTestResponseDto
 import com.example.durymong.model.dto.response.doit.TestPageResponseDto
 import com.example.durymong.model.repository.DoItRepository
@@ -18,17 +19,13 @@ class TestPageViewModel : ViewModel() {
 
 
     val testPageList: LiveData<List<TestPageData>> get() = _testPageList
-    val testPageResponseData: LiveData<TestPageResponseDto> get() = _testPageResponseData
+    private val testPageResponseData: LiveData<TestPageResponseDto> get() = _testPageResponseData
     val testResult: MutableLiveData<SubmitTestResponseDto> get() = _testResult
 
     // 각 테스트 항목
 
-    init {
-//        loadTestPageData(1)
-    }
-    // 넘겨줘야함
-
      fun loadTestPageData(testId: Int) {
+//         setTestPageData(1) // api 연결 안될 시 더미 코드
         viewModelScope.launch{
             try {
                 DoItRepository().getTestData(
@@ -51,10 +48,15 @@ class TestPageViewModel : ViewModel() {
 
         if (questionList != null) {
             for (question in questionList) {
-                testPageData.add( TestPageData(question,0,numberOfOptions))
+                testPageData.add( TestPageData(question,0,numberOfOptions,false))
             }
         }
         _testPageList.value=testPageData
+//        for (i in 0 until 20) { //api 연결 안될 시 더미 코드 (52~59 주석 처리후 실행바람)
+//            // 반복할 코드
+//            testPageData.add(TestPageData(QuestionDto(i,"으악?"),0,5,false))
+//        }
+//        _testPageList.value=testPageData
 
     }
     fun loadTestResult(testId: Int,submitTestRequestDto: SubmitTestRequestDto){
