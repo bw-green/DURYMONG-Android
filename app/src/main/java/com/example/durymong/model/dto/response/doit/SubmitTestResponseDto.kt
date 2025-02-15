@@ -1,6 +1,6 @@
 package com.example.durymong.model.dto.response.doit
 
-class SubmitTestResponseDto(
+data class SubmitTestResponseDto(
     val code:Int,
     val message: String,
     val result: ResponseResultData,

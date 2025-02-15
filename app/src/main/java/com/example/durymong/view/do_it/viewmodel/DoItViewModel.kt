@@ -26,8 +26,11 @@ class DoItViewModel : ViewModel() {
             }
         }
     }
+    fun cancelCheck(id: Int) {
+        DoItRepository().cancelCheck(id)
+    }
 
-    private fun loadTestMainPage() {
+    fun loadTestMainPage() {
         viewModelScope.launch {
             try {
                 DoItRepository().getDoItMainPage (

@@ -14,11 +14,8 @@ class TestMainPageViewModel: ViewModel() {
     private var _testMainPage = MutableLiveData<TestMainPageResponseDto>()
 
 
-    val testMainPageList: MutableLiveData<TestMainPageResponseDto> get() = _testMainPage
+    val testMainPage: MutableLiveData<TestMainPageResponseDto> = _testMainPage
 
-    init{
-        loadTestMainPage(1)
-    }
 
     fun loadTestMainPage(testId: Int) {
         viewModelScope.launch {

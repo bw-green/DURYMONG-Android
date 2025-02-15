@@ -1,6 +1,7 @@
 package com.example.durymong.view.do_it
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,19 +55,26 @@ class DoItFragment : Fragment() {
         return binding.root
     }
 
-    private fun initMainPage() {
-        val data =viewModel.doItMainPage.value?.result
-        binding.cbDoItWalk.isChecked=true
-        if (data != null) {
-            binding.cbDoItBedClean.isChecked =data.activityList[0].checked
-            binding.cbDoItWalk.isChecked =data.activityList[1].checked
-            binding.cbDoItStretching.isChecked =data.activityList[2].checked
-            binding.cbDoItMeditation.isChecked =data.activityList[3].checked
+    override fun onPause() {
+        // 이 때 다시 호출해서 점 색칠하기
+        super.onPause()
+        viewModel.loadTestMainPage()
+    }
 
-            Glide.with(this) // 메인 몽 이미지
-                .load(data.mongImage)
-                .into(binding.ivDoItMainMong)
+    private fun initMainPage() {
+        viewModel.doItMainPage.observe(viewLifecycleOwner){
+            if(it!=null){
+                Glide.with(this) // 메인 몽 이미지
+                    .load(it.result.mongImage)
+                    .into(binding.ivDoItMainMong)
+
+                binding.cbDoItBedClean.isChecked =it.result.activityList[0].checked
+                binding.cbDoItWalk.isChecked =it.result.activityList[1].checked
+                binding.cbDoItStretching.isChecked =it.result.activityList[2].checked
+                binding.cbDoItMeditation.isChecked =it.result.activityList[3].checked
+            }
         }
+
     }
 
     private fun initMonthlyDiary() {
@@ -78,16 +86,37 @@ class DoItFragment : Fragment() {
 
     private fun initCheckButton() {
         binding.cbDoItBedClean.setOnClickListener{
-            viewModel.submitCheck(CheckActivityRequest(1))
+            if(binding.cbDoItBedClean.isChecked){
+                viewModel.submitCheck(CheckActivityRequest(1))
+            }
+            else{
+                viewModel.cancelCheck(1)
+            }
+
         }
-        binding.cbDoItWalk.setOnClickListener{
-            viewModel.submitCheck(CheckActivityRequest(2))
+        binding.cbDoItWalk.setOnClickListener {
+            if (binding.cbDoItWalk.isChecked) {
+                viewModel.submitCheck(CheckActivityRequest(2))
+            } else {
+                viewModel.cancelCheck(2)
+            }
         }
         binding.cbDoItStretching.setOnClickListener{
-            viewModel.submitCheck(CheckActivityRequest(3))
+            if(binding.cbDoItStretching.isChecked){
+                viewModel.submitCheck(CheckActivityRequest(3))
+            }
+            else{
+                viewModel.cancelCheck(3)
+            }
+
         }
         binding.cbDoItMeditation.setOnClickListener{
-            viewModel.submitCheck(CheckActivityRequest(4))
+            if(binding.cbDoItMeditation.isChecked){
+                viewModel.submitCheck(CheckActivityRequest(4))
+            }
+            else{
+                viewModel.cancelCheck(4)
+            }
         }
     }
 

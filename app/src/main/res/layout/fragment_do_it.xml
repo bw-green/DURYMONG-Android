@@ -57,10 +57,11 @@
         android:layout_marginStart="3.72dp"
         android:layout_marginTop="30dp"
         android:contentDescription="두리몽 이미지"
-        android:src="@drawable/img_do_it_mong"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/iv_do_it_circle" />
+    <!--    android:src="@drawable/img_do_it_mong"-->
 
     <ImageView
         android:id="@+id/iv_do_it_calender"
@@ -258,6 +259,7 @@
                 app:layout_constraintTop_toTopOf="@id/cb_do_it_meditation" />
 
             <View
+                android:id="@+id/v_do_it_mid"
                 android:layout_width="1dp"
                 android:layout_height="200dp"
                 android:layout_marginTop="66dp"
@@ -271,9 +273,9 @@
                 android:layout_width="140dp"
                 android:layout_height="28dp"
                 android:layout_marginTop="81dp"
-                android:layout_marginEnd="41dp"
                 app:cardCornerRadius="7.62dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/v_do_it_mid"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -300,9 +302,9 @@
                 android:layout_width="140dp"
                 android:layout_height="28dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="41dp"
                 app:cardCornerRadius="7.62dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/v_do_it_mid"
                 app:layout_constraintTop_toBottomOf="@id/cv_do_it_post_traumatic_stress_test">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -329,9 +331,9 @@
                 android:layout_width="140dp"
                 android:layout_height="28dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="41dp"
                 app:cardCornerRadius="7.62dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/v_do_it_mid"
                 app:layout_constraintTop_toBottomOf="@id/cv_do_it_sentence_completion_test">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -358,9 +360,9 @@
                 android:layout_width="140dp"
                 android:layout_height="28dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="41dp"
                 app:cardCornerRadius="7.62dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/v_do_it_mid"
                 app:layout_constraintTop_toBottomOf="@id/cv_do_it_stress_level_test">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -387,9 +389,9 @@
                 android:layout_width="140dp"
                 android:layout_height="28dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="41dp"
                 app:cardCornerRadius="7.62dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/v_do_it_mid"
                 app:layout_constraintTop_toBottomOf="@id/cv_do_it_depression_test">
 
                 <androidx.constraintlayout.widget.ConstraintLayout

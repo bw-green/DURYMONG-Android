@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.durymong.databinding.FragmentLevelTestBinding
 import com.example.durymong.view.do_it.test_page.model.TestMainPageViewModel
+import com.example.durymong.view.do_it.test_page.model.TestPageViewModel
 
 class LevelTestFragment : Fragment() {
 
@@ -20,7 +21,7 @@ class LevelTestFragment : Fragment() {
     private val args: TestPageFragmentArgs by navArgs()
 
     private val viewModel: TestMainPageViewModel by activityViewModels()
-    private var testId=0
+    private var testId = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,7 +49,7 @@ class LevelTestFragment : Fragment() {
             else -> Log.d("TestMainPageViewModel", "테스트 네임 오타 발생" + args.testName)
         }
         viewModel.loadTestMainPage(testId)
-        viewModel.testMainPageList.observe(viewLifecycleOwner) { testMainPage ->
+        viewModel.testMainPage.observe(viewLifecycleOwner) { testMainPage ->
             testMainPage?.result?.let { result ->
                 binding.apply {
                     tvDoItStressNameTop.text = args.testName
@@ -62,12 +63,16 @@ class LevelTestFragment : Fragment() {
                     tvDoItQuestionNumber.text = "${result.countOfQuestions}문항"
                     tvDoItStressTime.text = "약 ${result.requiredTime}분"
 
+                    result.lastTestDTO.let { lastTest ->
+                        if (lastTest.date != null) {//
+                            tvDoItStressTestRecentRecordDate.text = lastTest.date
+                            tvDoItStressTestRecentRecordNameScore.text =
+                                "${lastTest.userName}님      ${lastTest.lastScore}점"
+                        } else {
+                            tvDoItStressTestRecentRecordDate.text = "최근 기록 없음"
+                            tvDoItStressTestRecentRecordNameScore.text = ""
+                        }
 
-                    // 왜인지 모르겠지 만 현재 date와 lastScore값이 null인 관계로 실행 안되는거일 수도 있다는 생각이들음
-                    result.lastTestDto.let { lastTest ->
-                        tvDoItStressTestRecentRecordDate.text = lastTest?.date
-                        tvDoItStressTestRecentRecordNameScore.text =
-                            "${lastTest.userName}님      ${lastTest.lastScore}점"
                     }
                 }
 
@@ -77,7 +82,8 @@ class LevelTestFragment : Fragment() {
 
     private fun initStartTest() {
         binding.ivDoItStressBottom.setOnClickListener {
-            val action = LevelTestFragmentDirections.actionLevelTestFragmentToTestPageFragment(args.testName)
+            val action =
+                LevelTestFragmentDirections.actionLevelTestFragmentToTestPageFragment(args.testName)
             findNavController().navigate(action)
         }
     }

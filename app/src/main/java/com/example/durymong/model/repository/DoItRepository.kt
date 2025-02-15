@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.durymong.model.dto.request.doit.CheckActivityRequest
 import com.example.durymong.model.dto.request.doit.SubmitTestRequestDto
 import com.example.durymong.model.dto.response.doit.ActivityTestListResponse
+import com.example.durymong.model.dto.response.doit.DeactivationResponse
 import com.example.durymong.model.dto.response.doit.SubmitTestResponseDto
 import com.example.durymong.model.dto.response.doit.TestMainPageResponseDto
 import com.example.durymong.model.dto.response.doit.TestPageResponseDto
@@ -11,32 +12,37 @@ import com.example.durymong.retrofit.RetrofitObject
 import com.example.durymong.retrofit.service.DoItService
 import retrofit2.Call
 import retrofit2.Callback
+import retrofit2.HttpException
 import retrofit2.Response
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 class DoItRepository {
     private val doItService: DoItService = RetrofitObject.createService()
 
-    fun getTestData(
-        testId: Int,
-        onSuccess: (TestPageResponseDto) -> Unit
-    ) {
+    fun getTestData(testId: Int, onSuccess: (TestPageResponseDto) -> Unit)=
         doItService.getTestPage(testId).enqueue(object : Callback<TestPageResponseDto> {
             override fun onResponse(
-                call: Call<TestPageResponseDto>,
-                response: Response<TestPageResponseDto>
+                p0: Call<TestPageResponseDto>,
+                p1: Response<TestPageResponseDto>
             ) {
-                if (response.isSuccessful) {
-                    onSuccess(response.body()!!)
-                    Log.d("DoItRepository", "onResponseSuccess")
-
+                if (p1.isSuccessful) {
+                    val body = p1.body()
+                    if (body != null) {
+                        onSuccess(body)
+                        Log.d("DoItRepository", body.result.numberOfOptions.toString())
+                    }
                 }
             }
+
             override fun onFailure(p0: Call<TestPageResponseDto>, p1: Throwable) {
-                Log.d("DoItRepository", "onFailure: ${p1.message}")
+                Log.d("testData", "onFailure: ${p1.message}")
             }
 
+
         })
-    }
+
 
     fun getTestMainPage(testId: Int,
                         onSuccess: (TestMainPageResponseDto) -> Unit
@@ -50,15 +56,36 @@ class DoItRepository {
                     val body = response.body()
                     if (body != null) {
                         onSuccess(body)
-                        Log.d("DoItRepository", "onResponseSuccess: $body")
+                        Log.d("getTestMainPage", body.result.lastTestDTO.userName)
                     }
                 }
             }
 
             override fun onFailure(call: Call<TestMainPageResponseDto>, t: Throwable) {
-                Log.e("DoItRepository", "onFailure: ${t.message}")
+                Log.e("getTestMainPage", "onFailure: ${t.message}")
             }
         })
+
+    fun cancelCheck(activityId: Int) {
+        doItService.cancelCheck(activityId).enqueue(object : Callback<DeactivationResponse>{
+            override fun onResponse(
+                p0: Call<DeactivationResponse>,
+                p1: Response<DeactivationResponse>
+            ) {
+                if(p1.isSuccessful){
+                    if(p1.body()!=null){
+                        Log.d("cancelCheck", "onResponseSuccess")
+                    }
+                }
+            }
+
+            override fun onFailure(p0: Call<DeactivationResponse>, p1: Throwable) {
+                Log.d("cancelCheck", "onFailure: ${p1.message}")
+            }
+
+        }
+        )
+    }
 
     fun getTestResult(testId: Int, submitTestRequestDto: SubmitTestRequestDto,onSuccess: (SubmitTestResponseDto) -> Unit)=
         doItService.submitTest(testId, submitTestRequestDto).enqueue(object : Callback<SubmitTestResponseDto> {
@@ -70,17 +97,17 @@ class DoItRepository {
                     if(response.body()!=null){
                         onSuccess(response.body()!!)
                     }else{
-                        Log.d("DoItRepository", "resultNull")
+                        Log.d("getTestResult", "resultNull")
                     }
                 }
                 else{
-                    Log.d("DoItRepository", "onResponseFail")
+                    Log.d("getTestResult", "onResponseFail")
                 }
 
             }
 
             override fun onFailure(p0: Call<SubmitTestResponseDto>, p1: Throwable) {
-                Log.d("DoItRepository", "onFailure: ${p1.message}")
+                Log.d("getTestResult", "onFailure: ${p1.message}")
             }
 
 

@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.recyclerview.widget.RecyclerView
 import com.example.durymong.databinding.ItemTestFiveBinding
 import com.example.durymong.databinding.ItemTestFourBinding
@@ -68,6 +67,9 @@ class RVTestPageAdapter(
                 item.selected = 4
             }
             when (item.selected) {
+                0-> if(item.showWarning) {
+                    binding.ivTestWarning.visibility= View.VISIBLE
+                }
                 1-> binding.rbTest1.isChecked = true
                 2-> binding.rbTest2.isChecked = true
                 3-> binding.rbTest3.isChecked = true
@@ -96,6 +98,9 @@ class RVTestPageAdapter(
                 item.selected = 5
             }
             when (item.selected) {
+                0-> if(item.showWarning) {
+                    binding.ivTestWarning.visibility= View.VISIBLE
+                }
                 1-> binding.rbTest1.isChecked = true
                 2-> binding.rbTest2.isChecked = true
                 3-> binding.rbTest3.isChecked = true
