@@ -14,11 +14,8 @@ class TestMainPageViewModel: ViewModel() {
     private var _testMainPage = MutableLiveData<TestMainPageResponseDto>()
 
 
-    val testMainPageList: MutableLiveData<TestMainPageResponseDto> = _testMainPage
+    val testMainPage: MutableLiveData<TestMainPageResponseDto> = _testMainPage
 
-    init{
-        loadTestMainPage(1)
-    }
 
     fun loadTestMainPage(testId: Int) {
         viewModelScope.launch {
@@ -28,7 +25,7 @@ class TestMainPageViewModel: ViewModel() {
                     onSuccess = { dto ->
                         // 여기서 받은 dto를 LiveData에 담아 UI로 전달
                         _testMainPage.value = dto
-                        Log.d("TestMainPageViewModel", "loadTestMainPage")
+
                     }
                 )
             } catch (e: Exception) {

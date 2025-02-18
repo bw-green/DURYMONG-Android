@@ -1,22 +1,16 @@
 package com.example.durymong.model.dto.response.doit
 
-class SubmitTestResponseDto(
+data class SubmitTestResponseDto(
     val code:Int,
     val message: String,
-    val result: SubmitResultData,
+    val result: ResponseResultData,
     val success: Boolean
 )
 
-data class ScoreDistributionData(
-    val minScore: Int,
-    val maxScore: Int,
-    val description: String
-)
-
-data class SubmitResultData (
+data class ResponseResultData (
     val testName: String,
-    val userName: String,
+    val nickName: String,
     val userScore: Int,
-    val userResult: ScoreDistributionData,
-    val scoreDistributionList: List<ScoreDistributionData>
+    val userResult: String,
+    val scoreDistributionList: String
 )
