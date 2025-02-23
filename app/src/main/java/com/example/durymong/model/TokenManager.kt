@@ -2,6 +2,7 @@ package com.example.durymong.model
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
@@ -34,5 +35,6 @@ object TokenManager {
     fun clearToken() {
         prefs.edit().remove(TOKEN_KEY).apply()
         _tokenLiveData.postValue(null)
+        Log.d("TokenManager", "토큰 삭제 완료")
     }
 }

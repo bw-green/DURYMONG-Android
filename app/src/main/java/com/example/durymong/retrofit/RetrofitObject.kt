@@ -2,6 +2,7 @@ package com.example.durymong.retrofit
 
 import com.example.durymong.BuildConfig
 import com.example.durymong.model.AuthInterceptor
+import com.example.durymong.model.RetryInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -15,10 +16,12 @@ object RetrofitObject {
     }
 
     private val authInterceptor = AuthInterceptor()
+    private val retryInterceptor = RetryInterceptor()
 
     private val client = OkHttpClient.Builder()
         .addInterceptor(loggingInterceptor)
         .addInterceptor(authInterceptor)
+        .addInterceptor(retryInterceptor)
         .build()
 
     val retrofit: Retrofit by lazy{

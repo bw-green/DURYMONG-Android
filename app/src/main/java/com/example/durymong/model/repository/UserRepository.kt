@@ -1,7 +1,9 @@
 package com.example.durymong.model.repository
 
 import android.util.Log
+import com.example.durymong.model.dto.request.user.ReIssueTokenReq
 import com.example.durymong.model.dto.request.user.UserLoginRequestDto
+import com.example.durymong.model.dto.response.user.UserAgainTokenRequestDto
 import com.example.durymong.model.dto.response.user.UserTokenRequestDto
 import com.example.durymong.retrofit.RetrofitObject
 import com.example.durymong.retrofit.service.UserService
@@ -34,4 +36,26 @@ class UserRepository {
             }
         })
     }
+
+    fun postRefreshToken(token: ReIssueTokenReq, responseCallback: (UserAgainTokenRequestDto) -> Unit) {
+        service.refreshToken(token).enqueue(object : Callback<UserAgainTokenRequestDto>{
+            override fun onResponse(
+                p0: Call<UserAgainTokenRequestDto>,
+                p1: Response<UserAgainTokenRequestDto>
+            ) {
+                if(p1.isSuccessful){
+                    if(p1.body()!=null) {
+                        responseCallback(p1.body()!!)
+                    }
+                    Log.d("postRefreshToken", "성공")
+                }
+            }
+
+            override fun onFailure(p0: Call<UserAgainTokenRequestDto>, p1: Throwable) {
+                Log.d("postRefreshToken", "Network error: ${p1.message}")
+            }
+
+        })
+    }
+
 }
